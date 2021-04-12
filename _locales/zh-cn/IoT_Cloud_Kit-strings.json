@@ -14,7 +14,7 @@
     "microIoT.mqttAddTopic|block": "新增订阅|%top |: %IOT_TOPIC",
     "microIoT.IFTTTConfigure|block": "IFTTT 配置|事件: %EVENT|密钥: %KEY|",
     "microIoT.IFTTTSend|block": "IFTTT 发送 值1:%value1|值2:%value2|值3:%value3",
-    "microIoT.ThingSpeakSend|block": "ThingSpeak 发送 值1:%field1||值2:%field2|值3:%field3|值4:%field4|值5:%field5|值6:%field6|值7:%field7 值8:%field8",
+    "microIoT.ThingSpeakSend|block": "ThingSpeak 发送 Field1:%field1||Field2:%field2|Field3:%field3|Field14:%field4|Field5:%field5|Field6:%field6|Field7:%field7 Field8:%field8",
     "microIoT.ThingSpeakConfigure|block": "ThingSpeak 配置 密钥: %KEY",    
     "microIoT.httpGet|block": "http(get) | url %url| 超时(毫秒) %time",
     "microIoT.httpPost|block": "http(post) | url %url| content %content| 超时(毫秒) %time",

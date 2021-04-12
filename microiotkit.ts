@@ -579,7 +579,7 @@ namespace microIoT {
     //% blockId=WiFi_IoT_I2C_ThingSpeak_Configure
     //% expandableArgumentMode="enabled"
     //% inlineInputMode=inline
-    //% block="ThingSpeak send value1: %field1||value2: %field2|value3: %field3|value4: %field4|value5: %field5|value6: %field6|value7: %field7 value8: %field8" 
+    //% block="ThingSpeak send Field1: %field1||Field2: %field2|Field3: %field3|Field4: %field4|Field5: %field5|Field6: %field6|Field7: %field7 Field8: %field8" 
     export function ThingSpeakSend(field1: string, field2?: string, field3?: string, field4?: string, field5?: string, field6?: string, field7?: string, field8?: string): void {
         microIoT_setPara(SETHTTP_IP, OBLOQ_MQTT_EASY_IOT_SERVER_TK)
         let tempStr = ""
