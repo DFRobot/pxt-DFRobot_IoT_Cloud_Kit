@@ -234,11 +234,35 @@ namespace microIoT {
         public message: string;
     }
     /**
-     * init I2C
+     * init equipment
      */
-    //% block=" I2C init"
-    export function i2cinit():void{
+    //% block="init equipment"
+    export function initEquipment():void{
         init();
+        microIoT_cmd(0xAE);  // Set display OFF
+        microIoT_cmd(0xD5);  // Set Display Clock Divide Ratio / OSC Frequency 0xD4
+        microIoT_cmd(0x80);  // Display Clock Divide Ratio / OSC Frequency 
+        microIoT_cmd(0xA8);  // Set Multiplex Ratio
+        microIoT_cmd(0x3F);  // Multiplex Ratio for 128x64 (64-1)
+        microIoT_cmd(0xD3);  // Set Display Offset
+        microIoT_cmd(0x00);  // Display Offset
+        microIoT_cmd(0x40);  // Set Display Start Line
+        microIoT_cmd(0x8D);  // Set Charge Pump
+        microIoT_cmd(0x14);  // Charge Pump (0x10 External, 0x14 Internal DC/DC)
+        microIoT_cmd(0xA1);  // Set Segment Re-Map
+        microIoT_cmd(0xC8);  // Set Com Output Scan Direction
+        microIoT_cmd(0xDA);  // Set COM Hardware Configuration
+        microIoT_cmd(0x12);  // COM Hardware Configuration
+        microIoT_cmd(0x81);  // Set Contrast
+        microIoT_cmd(0xCF);  // Contrast
+        microIoT_cmd(0xD9);  // Set Pre-Charge Period
+        microIoT_cmd(0xF1);  // Set Pre-Charge Period (0x22 External, 0xF1 Internal)
+        microIoT_cmd(0xDB);  // Set VCOMH Deselect Level
+        microIoT_cmd(0x40);  // VCOMH Deselect Level
+        microIoT_cmd(0xA4);  // Set all pixels OFF
+        microIoT_cmd(0xA6);  // Set display not inverted
+        microIoT_cmd(0xAF);  // Set display On
+        microIoT_clear();
     }
 
     /**
@@ -380,7 +404,6 @@ namespace microIoT {
     //% group="IoT"
     //% blockId=WiFi_IoT_I2C_WIFI_Setup block="Wi-Fi configure name: %SSID| password：%PASSWORD start connection"
     export function WIFISetup(SSID: string, PASSWORD: string): void {
-        init();
         microIoT_setPara(SETWIFI_NAME, SSID)
         microIoT_setPara(SETWIFI_PASSWORLD, PASSWORD)
         microIoT_runCommand(CONNECT_WIFI)
@@ -826,40 +849,6 @@ namespace microIoT {
         microIoT_InquireStatus();
     })
 
-     /**
-    * Initialize OLED, just put the module in the module at the beginning of the code, no need to reuse
-    */
-
-    //% weight=200
-    //% group="OLED"
-    //% block="init display"
-    export function microIoT_initDisplay(): void {
-        init();
-        microIoT_cmd(0xAE);  // Set display OFF
-        microIoT_cmd(0xD5);  // Set Display Clock Divide Ratio / OSC Frequency 0xD4
-        microIoT_cmd(0x80);  // Display Clock Divide Ratio / OSC Frequency 
-        microIoT_cmd(0xA8);  // Set Multiplex Ratio
-        microIoT_cmd(0x3F);  // Multiplex Ratio for 128x64 (64-1)
-        microIoT_cmd(0xD3);  // Set Display Offset
-        microIoT_cmd(0x00);  // Display Offset
-        microIoT_cmd(0x40);  // Set Display Start Line
-        microIoT_cmd(0x8D);  // Set Charge Pump
-        microIoT_cmd(0x14);  // Charge Pump (0x10 External, 0x14 Internal DC/DC)
-        microIoT_cmd(0xA1);  // Set Segment Re-Map
-        microIoT_cmd(0xC8);  // Set Com Output Scan Direction
-        microIoT_cmd(0xDA);  // Set COM Hardware Configuration
-        microIoT_cmd(0x12);  // COM Hardware Configuration
-        microIoT_cmd(0x81);  // Set Contrast
-        microIoT_cmd(0xCF);  // Contrast
-        microIoT_cmd(0xD9);  // Set Pre-Charge Period
-        microIoT_cmd(0xF1);  // Set Pre-Charge Period (0x22 External, 0xF1 Internal)
-        microIoT_cmd(0xDB);  // Set VCOMH Deselect Level
-        microIoT_cmd(0x40);  // VCOMH Deselect Level
-        microIoT_cmd(0xA4);  // Set all pixels OFF
-        microIoT_cmd(0xA6);  // Set display not inverted
-        microIoT_cmd(0xAF);  // Set display On
-        microIoT_clear();
-    }
     /**
      * OLED clear
      */
