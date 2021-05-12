@@ -234,9 +234,9 @@ namespace microIoT {
         public message: string;
     }
     /**
-     * init equipment
+     * init device
      */
-    //% block="init equipment"
+    //% block="init device"
     export function initEquipment():void{
         init();
         microIoT_cmd(0xAE);  // Set display OFF
@@ -326,14 +326,15 @@ namespace microIoT {
 
 
     function microIoT_setPara(cmd: number, para: string): void {
-        let buf = pins.createBuffer(para.length + 4);
+        let buf = pins.createBuffer((para.length) + 4);
         buf[0] = 0x1E
         buf[1] = SET_PARA
         buf[2] = cmd
         buf[3] = para.length
-        for (let i = 0; i < para.length; i++)
-            buf[i + 4] = para[i].charCodeAt(0)
+        for (let i = 0; i < para.length; i++){
+            buf[i + 4] = para[i].charCodeAt(0)}
         pins.i2cWriteBuffer(IIC_ADDRESS, buf);
+        
     }
 
     function microIoT_runCommand(cmd: number): void {
@@ -642,7 +643,7 @@ namespace microIoT {
     //% inlineInputMode=inline
     export function IFTTTSend(value1: string, value2: string, value3: string): void {
         microIoT_setPara(SETHTTP_IP, microIoT_WEBHOOKS_URL)
-        let tempStr = ""
+       let tempStr = ""
         tempStr = "trigger/" + microIoT_WEBHOOKS_EVENT + "/with/key/" + microIoT_WEBHOOKS_KEY + ",{\"value1\":\"" + value1 + "\",\"value2\":\"" + value2 + "\",\"value3\":\"" + value3 + "\" }" + "\r"
         microIoT_ParaRunCommand(POST_URL, tempStr)
     }
