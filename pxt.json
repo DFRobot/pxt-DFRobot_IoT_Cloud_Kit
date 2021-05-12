@@ -1,6 +1,6 @@
 {
     "name": "IoT_Cloud_Kit",
-    "version": "0.5.3",
+    "version": "0.5.4",
     "dependencies": {
         "core": "*"
     },
