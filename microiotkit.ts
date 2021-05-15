@@ -237,7 +237,7 @@ namespace microIoT {
      * init device
      */
     //% block="init device"
-    export function initEquipment():void{
+    export function initDevice():void{
         init();
         microIoT_cmd(0xAE);  // Set display OFF
         microIoT_cmd(0xD5);  // Set Display Clock Divide Ratio / OSC Frequency 0xD4
