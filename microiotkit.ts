@@ -218,7 +218,9 @@ namespace microIoT {
         //% blockId=SERVERS_China block="EasyIoT_CN"
         China,
         //% blockId=SERVERS_English block="EasyI0T_EN"
-        English
+        English,
+        //% block="SIOT"
+        SIOT
         
     }
 
