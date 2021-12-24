@@ -239,6 +239,16 @@ namespace microIoT {
     //% block="init device"
     export function initDevice():void{
         init();
+        let Version = microIoT_get_version();
+        if (Version == "V4.0") {
+            serial.writeLine(Version)
+            let buf = pins.createBuffer(3);
+            buf[0] = 0x1E;
+            buf[1] = 0x02;
+            buf[2] = 0x17;
+            pins.i2cWriteBuffer(IIC_ADDRESS, buf);
+            basic.pause(2000)
+        }
         microIoT_cmd(0xAE);  // Set display OFF
         microIoT_cmd(0xD5);  // Set Display Clock Divide Ratio / OSC Frequency 0xD4
         microIoT_cmd(0x80);  // Display Clock Divide Ratio / OSC Frequency 
@@ -1754,5 +1764,17 @@ namespace microIoT {
         }
         return pins.digitalReadPin(index_T);
     }
+    
+    function microIoT_get_version(): string {
+        let buf = pins.createBuffer(3);
+        buf[0] = 0x1E;
+        buf[1] = RUN_COMMAND;
+        buf[2] = GET_VERSION;
+        pins.i2cWriteBuffer(IIC_ADDRESS, buf);
+        microIoT_CheckStatus("READ_VERSION");
+        return RECDATA
+    }
+
+    
 
 }
