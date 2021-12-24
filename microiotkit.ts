@@ -239,17 +239,7 @@ namespace microIoT {
     //% block="init device"
     export function initDevice():void{
         //init();
-        let Version = microIoT_get_version();
-        if (Version == "V4.0") {
-
-            //serial.writeLine(Version)
-            let buf = pins.createBuffer(3);
-            buf[0] = 0x1E;
-            buf[1] = 0x02;
-            buf[2] = 0x17;
-            pins.i2cWriteBuffer(IIC_ADDRESS, buf);
-            basic.pause(2000)
-        }
+       
         microIoT_cmd(0xAE);  // Set display OFF
         microIoT_cmd(0xD5);  // Set Display Clock Divide Ratio / OSC Frequency 0xD4
         microIoT_cmd(0x80);  // Display Clock Divide Ratio / OSC Frequency 
@@ -274,6 +264,17 @@ namespace microIoT {
         microIoT_cmd(0xA6);  // Set display not inverted
         microIoT_cmd(0xAF);  // Set display On
         microIoT_clear();
+        let Version = microIoT_get_version();
+        if (Version == "V4.0") {
+
+            //serial.writeLine(Version)
+            let buf = pins.createBuffer(3);
+            buf[0] = 0x1E;
+            buf[1] = 0x02;
+            buf[2] = 0x17;
+            pins.i2cWriteBuffer(IIC_ADDRESS, buf);
+            basic.pause(2000)
+        }
     }
 
     /**
@@ -454,6 +455,7 @@ namespace microIoT {
         microIoT_CheckStatus("MQTTConnected");
         serial.writeString("mqtt connected\r\n");
       
+        basic.pause(100)
         Topic_0 = IOT_TOPIC
         microIoT_ParaRunCommand(SUB_TOPIC0, IOT_TOPIC);
         microIoT_CheckStatus("SubTopicOK");
@@ -796,7 +798,7 @@ namespace microIoT {
                 if (tempStatus == WIFI_CONNECTING) {
                     microIoTStatus = "WiFiConnecting"
                 } else if (tempStatus == WIFI_CONNECTED) {
-                    microIoTStatus = "WiFiConnected"
+                    //microIoTStatus = "WiFiConnected"
                 } else if (tempStatus == WIFI_DISCONNECT) {
                     microIoTStatus = "WiFiDisconnect"
                 } else {
@@ -822,6 +824,7 @@ namespace microIoT {
                 microIoTStatus = "READ_IP"
                 microIoT_GetData(tempStatus)
                 microIoT_IP = RECDATA
+                microIoTStatus = "WiFiConnected"
                 break;
             case SUB_TOPIC0:
                 microIoTStatus = "READ_TOPICDATA"
