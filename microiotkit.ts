@@ -1582,14 +1582,24 @@ namespace microIoT {
         pins.i2cWriteNumber(0x10, 0x20, NumberFormat.Int8LE)
         let buf = pins.i2cReadBuffer(0x10, 7);
         let buffer = pins.createBuffer(7);
-        buf[0] = 0x16;
-        buf[1] = year-2000;
-        buf[2] = buffer[1];
-        buf[3] = buffer[2];
-        buf[4] = buffer[3];
-        buf[5] = buffer[4];
-        buf[6] = buffer[5];
-        pins.i2cWriteBuffer(0x10, buf);
+        buffer[0] = 0x16;
+        buffer[1] = year-2000;
+        buffer[2] = buf[1];
+        buffer[3] = buf[2];
+        buffer[4] = buf[3];
+        buffer[5] = buf[4];
+        buffer[6] = buf[5];
+        pins.i2cWriteBuffer(0x10, buffer);
+        let data;
+        while (true) {
+            pins.i2cWriteNumber(0x10, 0x20, NumberFormat.Int8LE)
+            let buffer = pins.i2cReadBuffer(0x10, 7)
+            data = buffer[0] + 2000
+            basic.pause(50)
+            if (data == year) {
+                return;
+            }
+        }
     }
     /**
      * Set month
@@ -1603,14 +1613,24 @@ namespace microIoT {
         pins.i2cWriteNumber(0x10, 0x20, NumberFormat.Int8LE)
         let buf = pins.i2cReadBuffer(0x10, 7);
         let buffer = pins.createBuffer(7);
-        buf[0] = 0x16;
-        buf[1] = buffer[0];
-        buf[2] = month;
-        buf[3] = buffer[2];
-        buf[4] = buffer[3];
-        buf[5] = buffer[4];
-        buf[6] = buffer[5];
-        pins.i2cWriteBuffer(0x10, buf);
+        buffer[0] = 0x16;
+        buffer[1] = buf[0];
+        buffer[2] = month;
+        buffer[3] = buf[2];
+        buffer[4] = buf[3];
+        buffer[5] = buf[4];
+        buffer[6] = buf[5];
+        pins.i2cWriteBuffer(0x10, buffer);
+        let data
+        while (true) {
+            pins.i2cWriteNumber(0x10, 0x20, NumberFormat.Int8LE)
+            let buffer = pins.i2cReadBuffer(0x10, 7)
+            data = buffer[1] 
+            basic.pause(50)
+            if (data == month) {
+                return;
+            }
+        }
     }
     /**
      * Set day
@@ -1625,14 +1645,24 @@ namespace microIoT {
         let buf = pins.i2cReadBuffer(0x10, 7);
         let buffer = pins.createBuffer(7);
         compare(buffer[0],buffer[1],day);
-        buf[0] = 0x16;
-        buf[1] = buffer[0];
-        buf[2] = buffer[1];
-        buf[3] = day;
-        buf[4] = buffer[3];
-        buf[5] = buffer[4];
-        buf[6] = buffer[5];
-        pins.i2cWriteBuffer(0x10, buf);
+        buffer[0] = 0x16;
+        buffer[1] = buf[0];
+        buffer[2] = buf[1];
+        buffer[3] = day;
+        buffer[4] = buf[3];
+        buffer[5] = buf[4];
+        buffer[6] = buf[5];
+        pins.i2cWriteBuffer(0x10, buffer);
+        let data
+        while (true) {
+            pins.i2cWriteNumber(0x10, 0x20, NumberFormat.Int8LE)
+            let buffer = pins.i2cReadBuffer(0x10, 7)
+            data = buffer[2]
+            basic.pause(50)
+            if (data == day) {
+                return;
+            }
+        }
     }
     /**
      * Set hours
@@ -1645,14 +1675,24 @@ namespace microIoT {
         pins.i2cWriteNumber(0x10, 0x20, NumberFormat.Int8LE)
         let buf = pins.i2cReadBuffer(0x10, 7);
         let buffer = pins.createBuffer(7);
-        buf[0] = 0x16;
-        buf[1] = buffer[0];
-        buf[2] = buffer[1];
-        buf[3] = buffer[2];
-        buf[4] = hour;
-        buf[5] = buffer[4];
-        buf[6] = buffer[5];
-        pins.i2cWriteBuffer(0x10, buf);
+        buffer[0] = 0x16;
+        buffer[1] = buf[0];
+        buffer[2] = buf[1];
+        buffer[3] = buf[2];
+        buffer[4] = hour;
+        buffer[5] = buf[4];
+        buffer[6] = buf[5];
+        pins.i2cWriteBuffer(0x10, buffer);
+        let data
+        while (true) {
+            pins.i2cWriteNumber(0x10, 0x20, NumberFormat.Int8LE)
+            let buffer = pins.i2cReadBuffer(0x10, 7)
+            data = buffer[3]
+            basic.pause(50)
+            if (data == hour) {
+                return;
+            }
+        }
     }
     /**
      * Set minutes
@@ -1665,14 +1705,24 @@ namespace microIoT {
         pins.i2cWriteNumber(0x10, 0x20, NumberFormat.Int8LE)
         let buf = pins.i2cReadBuffer(0x10, 7);
         let buffer = pins.createBuffer(7);
-        buf[0] = 0x16;
-        buf[1] = buffer[0];
-        buf[2] = buffer[1];
-        buf[3] = buffer[2];
-        buf[4] = buffer[3];
-        buf[5] = minute;
-        buf[6] = buffer[5];
-        pins.i2cWriteBuffer(0x10, buf);
+        buffer[0] = 0x16;
+        buffer[1] = buf[0];
+        buffer[2] = buf[1];
+        buffer[3] = buf[2];
+        buffer[4] = buf[3];
+        buffer[5] = minute;
+        buffer[6] = buf[5];
+        pins.i2cWriteBuffer(0x10, buffer);
+        let data
+        while (true) {
+            pins.i2cWriteNumber(0x10, 0x20, NumberFormat.Int8LE)
+            let buffer = pins.i2cReadBuffer(0x10, 7)
+            data = buffer[4]
+            basic.pause(50)
+            if (data == minute) {
+                return;
+            }
+        }
     }
     /**
      * Set seconds
@@ -1685,14 +1735,24 @@ namespace microIoT {
         pins.i2cWriteNumber(0x10, 0x20, NumberFormat.Int8LE)
         let buf = pins.i2cReadBuffer(0x10, 7);
         let buffer = pins.createBuffer(7);
-        buf[0] = 0x16;
-        buf[1] = buffer[0];
-        buf[2] = buffer[1];
-        buf[3] = buffer[2];
-        buf[4] = buffer[3];
-        buf[5] = buffer[4];
-        buf[6] = second;
-        pins.i2cWriteBuffer(0x10, buf);
+        buffer[0] = 0x16;
+        buffer[1] = buf[0];
+        buffer[2] = buf[1];
+        buffer[3] = buf[2];
+        buffer[4] = buf[3];
+        buffer[5] = buf[4];
+        buffer[6] = second;
+        pins.i2cWriteBuffer(0x10, buffer);
+        let data
+        while (true) {
+            pins.i2cWriteNumber(0x10, 0x20, NumberFormat.Int8LE)
+            let buffer = pins.i2cReadBuffer(0x10, 7)
+            data = buffer[5]
+            basic.pause(50)
+            if (data == second) {
+                return;
+            }
+        }
     }
     /**
      * Git time
