@@ -1749,7 +1749,7 @@ namespace microIoT {
             let buffer = pins.i2cReadBuffer(0x10, 7)
             data = buffer[5]
             basic.pause(50)
-            if (data >= second) {
+            if (data != 0) {
                 return;
             }
         }
