@@ -1,7 +1,7 @@
 /*！
  * @file pxt-microIoT/microIoT.ts
  * @brief DFRobot's obloq makecode library.
- * @n [Get the module here](等网址)
+ * @n [Get the module here]
  * @n micro:bit IoT Kit is a set of modules designed to incorporate IoT in education, supporting multiple popular IoT platforms like easyIoT, Thingspeak, and IFTTT. 
  * It includes 14 external sensors and 15 application tutorials.  
  *

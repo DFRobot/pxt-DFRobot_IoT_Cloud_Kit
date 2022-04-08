@@ -1,6 +1,6 @@
 # IoT Cloud Kit
 
-[micro:bit IoT Kit is a set of modules designed to incorporate IoT in education, supporting multiple popular IoT platforms like easyIoT, Thingspeak, and IFTTT. It includes 14 external sensors and 15 application tutorials. ](无)
+[IoT Cloud Kit for micro:bit is an IoT theme kit that provides an excellent solution to IoT classroom teaching and supports various IoT platforms like IFTTT, ThingSpeak, Easy IoT, etc. The kit includes all kinds of Gravity sensors that can be combined with IoT platforms to make projects involving automation services, remote control, data collection and analysis. For example, volume analysis, remote light control, fire prevention, the exploration of the relation of light and heat, etc. ](https://wiki.dfrobot.com/_SKU_KIT0161-EN_IoT_Cloud_Kit_for_micro:bit)
 
 ## Basic usage
 
@@ -50,7 +50,7 @@
     microIoT.microIoT_WIFI("dfrobotGuest", "dfrobot2020")
 
 ```
-* 舵机和电机控制模块
+* Steering gear and motor control module
 
 ```blocks
 
@@ -64,7 +64,7 @@
     })
 
 ```
-* 在传感器标签下的模块用于获取相应传感器数据信息
+* The module under the sensor label is used to obtain sensor data information
 
 ```blocks
 
