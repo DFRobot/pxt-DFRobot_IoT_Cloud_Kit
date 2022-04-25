@@ -804,8 +804,6 @@ namespace microIoT {
         recbuf = pins.i2cReadBuffer(IIC_ADDRESS, 2, false)
         tempId = recbuf[0]
         tempStatus = recbuf[1]
-        serial.writeValue("x", tempId)
-        serial.writeValue("x", tempStatus)
         switch (tempId) {
             case READ_PING:
                 if (tempStatus == PING_OK) {
