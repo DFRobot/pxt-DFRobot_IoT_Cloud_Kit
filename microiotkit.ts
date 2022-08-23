@@ -273,8 +273,7 @@ namespace microIoT {
         microIoT_clear();
         let Version = microIoT_get_version();
         if (Version == "V4.0") {
-
-            //serial.writeLine(Version)
+           serial.writeLine(Version)
             versionState = 1;
             let buf = pins.createBuffer(3);
             buf[0] = 0x1E;
@@ -1868,7 +1867,7 @@ namespace microIoT {
         buf[1] = RUN_COMMAND;
         buf[2] = GET_VERSION;
         pins.i2cWriteBuffer(IIC_ADDRESS, buf);
-        microIoT_CheckStatus("READ_VERSION");
+        //microIoT_CheckStatus("READ_VERSION");
         return RECDATA
     }
 
